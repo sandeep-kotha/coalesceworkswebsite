@@ -1,404 +1,418 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <title>Coalesce Works - Open for Innovation Open to change</title>
-    	<meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-<!-- 
-Coalesce Works Template 
-http://www.coalesceworks.com
--->
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-        
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome.css">
-        <link rel="stylesheet" href="css/animate.css">
-        <link rel="stylesheet" href="css/templatemo_misc.css">
-        <link rel="stylesheet" href="css/templatemo_style.css">
+<html lang="en-GB" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coalesce Works — Britain's premier sovereign technology consultancy. Moving Britain from global tech consumer to sovereign producer.">
+  <meta name="theme-color" content="#0a1628">
+  <meta property="og:title" content="Coalesce Works — Sovereign Technology Consultancy">
+  <meta property="og:description" content="Elite sovereign technology consultancy in AI, energy, food security, health, and finance. Engineering a self-reliant Britain.">
+  <meta property="og:type" content="website">
+  <title>Coalesce Works — Sovereign Technology Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0a1628',
+            'navy-light': '#001F3F',
+            silver: '#C0C0C0',
+            teal: '#00BFA5',
+            'warm-white': '#F5F2EB'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root { --navy: #0a1628; --silver: #C0C0C0; --teal: #00BFA5; --warm-white: #F5F2EB; }
+    html { font-size: 16px; }
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .font-display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+    .glass { background: rgba(10, 22, 40, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(192, 192, 192, 0.1); }
+    .glass-card { background: rgba(10, 22, 40, 0.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(192, 192, 192, 0.08); }
+    .circuit-static { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0v10M30 50v10M0 30h10M50 30h10M10 10l7 7M43 43l7 7M10 50l7-7M43 17l7-7' stroke='%2300BFA5' stroke-width='0.25' stroke-opacity='0.12' fill='none'/%3E%3C/svg%3E"); }
+    .circuit-live { position: absolute; inset: 0; opacity: 0.4; overflow: hidden; }
+    .circuit-pulse { animation: circuitPulse 4s ease-in-out infinite; }
+    @keyframes circuitPulse { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.4; } }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scroll-snap-x { scroll-snap-type: x mandatory; }
+    .scrolled-nav { background: rgba(10, 22, 40, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; }
+    .scrolled-nav.is-scrolled { background: rgba(10, 22, 40, 0.85); border-bottom-color: rgba(192, 192, 192, 0.06); }
+    @media (prefers-reduced-motion: reduce) { .reveal { transition: none; transform: none; } .reveal.visible { opacity: 1; } .circuit-pulse { animation: none; } }
+  </style>
+</head>
+<body class="bg-navy text-silver antialiased min-h-screen" x-data="{ modal: null, mobileNavOpen: false, formSubmitted: false, bookingSubmitted: false, formError: '', formLoading: false, bookingError: '', bookingLoading: false }" @keydown.escape.window="modal = null" x-effect="modal && setTimeout(() => document.querySelector('#modal-' + modal)?.closest('.relative')?.querySelector('button')?.focus(), 100)">
+  <!-- Formspree: Replace YOUR_FORMSPREE_FORM_ID with your form ID from formspree.io (free signup). Both contact and booking forms will email you. -->
+  <script>window.FORMSPREE_ID = 'YOUR_FORMSPREE_FORM_ID';</script>
+  <a href="#main" class="absolute left-4 top-4 -translate-y-[200%] focus:translate-y-0 z-[110] px-4 py-2 bg-teal text-navy font-semibold rounded-lg transition-transform focus:outline-none focus:ring-2 focus:ring-white">Skip to main</a>
 
-        <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
+  <nav class="fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 scrolled-nav" role="navigation" aria-label="Main">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+      <a href="#" class="font-display font-bold text-xl text-warm-white tracking-tight hover:text-teal transition-colors">Coalesce Works</a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#mission" class="text-sm font-medium text-silver/90 hover:text-teal transition-colors">Mission</a>
+        <a href="#projects" class="text-sm font-medium text-silver/90 hover:text-teal transition-colors">Projects</a>
+        <a href="#doctrine" class="text-sm font-medium text-silver/90 hover:text-teal transition-colors">Doctrine</a>
+        <a href="#mandates" class="text-sm font-medium text-silver/90 hover:text-teal transition-colors">Mandates</a>
+        <a href="#engage" class="inline-flex items-center px-5 py-2.5 bg-teal text-navy font-semibold rounded-lg hover:bg-teal/90 transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-navy">Engage</a>
+      </div>
+      <button class="lg:hidden p-2 text-silver hover:text-teal" @click="mobileNavOpen = !mobileNavOpen" :aria-expanded="mobileNavOpen" aria-controls="mobile-nav" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <div id="mobile-nav" class="lg:hidden overflow-hidden transition-[max-height] duration-300" :class="mobileNavOpen ? 'max-h-96' : 'max-h-0'">
+      <div class="px-4 py-4 space-y-2 glass-card mx-4 rounded-lg mt-2">
+        <a href="#mission" class="block py-2 text-silver hover:text-teal" @click="mobileNavOpen = false">Mission</a>
+        <a href="#projects" class="block py-2 text-silver hover:text-teal" @click="mobileNavOpen = false">Projects</a>
+        <a href="#doctrine" class="block py-2 text-silver hover:text-teal" @click="mobileNavOpen = false">Doctrine</a>
+        <a href="#mandates" class="block py-2 text-silver hover:text-teal" @click="mobileNavOpen = false">Mandates</a>
+        <a href="#engage" class="block py-2 bg-teal text-navy font-semibold rounded-lg text-center" @click="mobileNavOpen = false">Engage</a>
+      </div>
+    </div>
+  </nav>
 
+  <section class="relative min-h-screen flex flex-col justify-center overflow-hidden" aria-labelledby="hero-heading">
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?w=1920&q=85" alt="British countryside at dusk" class="w-full h-full object-cover" fetchpriority="high" width="1920" height="1080">
+      <div class="absolute inset-0 bg-navy/75"></div>
+      <div class="absolute inset-0 circuit-static"></div>
+      <div class="circuit-live circuit-pulse">
+        <svg class="absolute w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#00BFA5" stop-opacity="0.3"/><stop offset="100%" stop-color="#00BFA5" stop-opacity="0"/></linearGradient>
+          </defs>
+          <path d="M0 20 L200 20 L200 40 L400 40 L400 60 L600 60" stroke="url(#tealGrad)" stroke-width="0.5" fill="none" stroke-dasharray="4 8" style="animation: dash 8s linear infinite"/>
+          <path d="M100 100 L300 100 L300 80 L500 80 L500 120 L700 120" stroke="url(#tealGrad)" stroke-width="0.5" fill="none" stroke-dasharray="4 8" style="animation: dash 10s linear infinite reverse"/>
+        </svg>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy"></div>
+    </div>
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-24">
+      <h1 id="hero-heading" class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-warm-white mb-6 reveal" style="line-height: 1.1">Engineering a Self-Reliant Britain</h1>
+      <p class="text-lg sm:text-xl text-silver/90 max-w-2xl mx-auto mb-10 reveal">Elite sovereign technology consultancy. AI, energy, food security, health, finance.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
+        <a href="#projects" class="inline-flex justify-center px-8 py-4 bg-teal text-navy font-semibold rounded-lg hover:bg-teal/90 transition-all hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-navy">Explore Projects</a>
+        <a href="#engage" class="inline-flex justify-center px-8 py-4 glass border border-silver/30 text-silver font-medium rounded-lg hover:border-teal/50 hover:text-teal transition-all">Engage</a>
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2">
+      <a href="#mission" class="text-silver/50 hover:text-teal transition-colors" aria-label="Scroll"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></a>
+    </div>
+  </section>
 
-        <div class="site-main" id="sTop">
-            <div class="site-header">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <ul class="social-icons">
-                                <li><a href="#" class="fa fa-facebook"></a></li>
-                                <li><a href="#" class="fa fa-twitter"></a></li>
-                                <li><a href="#" class="fa fa-dribbble"></a></li>
-                                <li><a href="#" class="fa fa-linkedin"></a></li>
-                            </ul>
-                        </div> <!-- /.col-md-12 -->
-                    </div> <!-- /.row -->
-                </div> <!-- /.container -->
-                <div class="main-header">
-                    <div class="container">
-                        <div id="menu-wrapper">
-                            <div class="row">
-                                <div class="logo-wrapper col-md-2 col-sm-2">
-                                    <h1>
-                                        <a href="#">CoalesceWorks</a>
-                                    </h1>
-                                </div> <!-- /.logo-wrapper -->
-                                <div class="col-md-10 col-sm-10 main-menu text-right">
-                                    <div class="toggle-menu visible-sm visible-xs"><i class="fa fa-bars"></i></div>
-                                    <ul class="menu-first">
-                                        <li class="active"><a href="#">Home</a></li>
-                                        <li><a href="#services">Consulting</a></li>
-                                        <li><a href="#portfolio">Digital</a></li>
-                                        <li><a href="#our-team">Careers</a></li>
-                                        <li><a href="#contact">Contact</a></li>                                 
-                                    </ul>                                    
-                                </div> <!-- /.main-menu -->
-                            </div> <!-- /.row -->
-                        </div> <!-- /#menu-wrapper -->                        
-                    </div> <!-- /.container -->
-                </div> <!-- /.main-header -->
-            </div> <!-- /.site-header -->
-            <div class="site-slider">
-                <div class="slider">
-                    <div class="flexslider">
-                        <ul class="slides">
-                            <li>
-                                <div class="overlay"></div>
-                                <img src="images/slide1.jpg" alt="">
-                                <div class="slider-caption visible-md visible-lg">
-                                    <h2>Big Data</h2>
-                                    <p>Aspire to innovate, forecast, adapt, compete and prosper</p>
-                                    <a href="#" class="slider-btn">Responsive Template</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="overlay"></div>
-                                <img src="images/slide2.jpg" alt="">
-                                <div class="slider-caption visible-md visible-lg">
-                                    <h2>Enterprise Application Integration</h2>
-                                    <p>Real time support to operate, co-operate and  co-ordinate across your company</p>
-                                    <a href="#" class="slider-btn">Go to Portfolio</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="overlay"></div>
-                                <img src="images/slide3.jpg" alt="">
-                                <div class="slider-caption visible-md visible-lg">
-                                    <h2>Dev Ops</h2>
-                                    <p>Efficently Collaborate, Predict, Automate and Repeat with your software delivery and infrastructure changes across new or existing Corporate Systems</p>
-                                    <a href="#" class="slider-btn">Mobile Website</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div> <!-- /.flexslider -->
-                </div> <!-- /.slider -->
-            </div> <!-- /.site-slider -->
-        </div> <!-- /.site-main -->
+  <main id="main">
+  <section id="mission" class="py-24 sm:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 circuit-static opacity-50"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-warm-white mb-8 reveal">Our Mission</h2>
+      <p class="text-lg sm:text-xl text-silver/90 leading-relaxed mb-6 reveal">We move Britain from a global tech consumer to a sovereign producer. Not through rhetoric. Through systems—designed, built, and deployed on these islands.</p>
+      <p class="text-silver/80 leading-relaxed reveal">The critical domains—energy, food, health, finance—are too often governed by infrastructure we do not own, algorithms we cannot audit, and supply chains we cannot secure. Coalesce Works exists to change that.</p>
+    </div>
+  </section>
 
+  <section id="projects" class="py-24 sm:py-32">
+    <div class="mb-16 px-4">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-warm-white mb-4 reveal">The Four Sovereign Projects</h2>
+      <p class="text-silver/80 max-w-2xl reveal">Building Britain's independence across the critical domains that define national resilience.</p>
+    </div>
+    <div class="overflow-x-auto scroll-snap-x scrollbar-hide pb-8 -mx-4 sm:mx-0">
+      <div class="flex gap-6 px-4 sm:px-6 lg:px-8 min-w-max sm:min-w-0 sm:grid sm:grid-cols-2 lg:grid-cols-4">
+        <article class="reveal w-[85vw] sm:w-auto flex-shrink-0 scroll-snap-start glass-card rounded-2xl overflow-hidden group hover:border-teal/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl" style="min-width: 320px" @click="modal = 'volt'">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=85" alt="Power grid infrastructure" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="600" height="300">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 bg-teal/20 text-teal text-xs font-semibold rounded-full backdrop-blur">Energy Sovereignty</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-warm-white mb-2">Project Volt</h3>
+            <p class="text-teal/90 text-sm font-medium mb-3">Transformer-based Load Models</p>
+            <p class="text-silver/80 text-sm mb-4">Decoupling the UK from volatile global gas markets.</p>
+            <ul class="space-y-2 mb-4 text-sm text-silver/90">
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Real-time demand forecasting across the National Grid</li>
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Renewable integration at scale without stability sacrifice</li>
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Strategic reserve optimisation reducing dependency on imports</li>
+            </ul>
+            <span class="text-teal font-semibold text-sm">Learn more →</span>
+          </div>
+        </article>
+        <article class="reveal w-[85vw] sm:w-auto flex-shrink-0 scroll-snap-start glass-card rounded-2xl overflow-hidden group hover:border-teal/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl" style="min-width: 320px" @click="modal = 'ceres'">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=85" alt="UK farmland and agriculture" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="600" height="300">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 bg-teal/20 text-teal text-xs font-semibold rounded-full backdrop-blur">Agricultural Sovereignty</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-warm-white mb-2">Project Ceres</h3>
+            <p class="text-teal/90 text-sm font-medium mb-3">Computer Vision & Robotics</p>
+            <p class="text-silver/80 text-sm mb-4">95% reduction in water use and zero dependency on seasonal imports.</p>
+            <ul class="space-y-2 mb-4 text-sm text-silver/90">
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Autonomous precision agriculture across British arable land</li>
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Disease and nutrient detection at leaf level before harvest loss</li>
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Vertical farming systems for year-round domestic production</li>
+            </ul>
+            <span class="text-teal font-semibold text-sm">Learn more →</span>
+          </div>
+        </article>
+        <article class="reveal w-[85vw] sm:w-auto flex-shrink-0 scroll-snap-start glass-card rounded-2xl overflow-hidden group hover:border-teal/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl" style="min-width: 320px" @click="modal = 'aethelgard'">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=85" alt="Healthcare technology" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="600" height="300">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 bg-teal/20 text-teal text-xs font-semibold rounded-full backdrop-blur">Health Sovereignty</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-warm-white mb-2">Project Aethelgard</h3>
+            <p class="text-teal/90 text-sm font-medium mb-3">Multimodal Agentic AI</p>
+            <p class="text-silver/80 text-sm mb-4">Moving Britain from the Sickness Economy to Predictive Longevity.</p>
+            <ul class="space-y-2 mb-4 text-sm text-silver/90">
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Unified patient intelligence across NHS and private pathways</li>
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Early intervention models that predict deterioration before crisis</li>
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Clinical decision support with full audit trails for regulatory compliance</li>
+            </ul>
+            <span class="text-teal font-semibold text-sm">Learn more →</span>
+          </div>
+        </article>
+        <article class="reveal w-[85vw] sm:w-auto flex-shrink-0 scroll-snap-start glass-card rounded-2xl overflow-hidden group hover:border-teal/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl" style="min-width: 320px" @click="modal = 'bullion'">
+          <div class="relative h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600&q=85" alt="British gold sovereigns" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="600" height="300">
+            <div class="absolute inset-0 bg-gradient-to-t from-navy via-navy/50 to-transparent"></div>
+            <span class="absolute top-4 left-4 px-3 py-1 bg-teal/20 text-teal text-xs font-semibold rounded-full backdrop-blur">Financial Sovereignty</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-display text-xl font-bold text-warm-white mb-2">Project Bullion</h3>
+            <p class="text-teal/90 text-sm font-medium mb-3">Distributed Ledger Technology</p>
+            <p class="text-silver/80 text-sm mb-4">CGT-free wealth preservation using physical British Sovereigns.</p>
+            <ul class="space-y-2 mb-4 text-sm text-silver/90">
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Tokenised proof-of-custody for physical British Sovereign coins</li>
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Fractional ownership with full legal title and HM Revenue recognition</li>
+              <li class="flex items-start gap-2"><span class="text-teal mt-0.5">→</span> Immutable chain of custody from Royal Mint to vault</li>
+            </ul>
+            <span class="text-teal font-semibold text-sm">Learn more →</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <div class="content-section" id="services">
-            <div class="container">
-                <div class="row">
-                    <div class="heading-section col-md-12 text-center">
-                        <h2>Consulting</h2>
-                        <p>Your Innovtaive partner to bring brilliant ideas, deep industry & technical knowledge and meaningful insights</p>
-                    </div> <!-- /.heading-section -->
-                </div> <!-- /.row -->
-                <div class="row">
-                     <div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <img src="images/gallery/businessConsulting.png" alt="">
-                            <div class="portfolio-overlay">
-                                <h3>Business Consulting</h3>
-                                <p>Comitted to deliver commerical and operational value by solving complex business problems that involves Strategy, Design, Delivey and Support</p>
-                            </div> <!-- /.portfolio-overlay -->
-                        </div> <!-- /.portfolio-thumb -->
-                    </div> <!-- /.portfolio-item -->
-					<div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <img src="images/gallery/technologyConsulting.png" alt="">
-                            <div class="portfolio-overlay">
-                                <h3>Technology Consulting</h3>
-                                <p>Bridging gap between Business, Strategy, Innovation, Deliverables and Goals.</p>
-                                
-                            </div> <!-- /.portfolio-overlay -->
-                        </div> <!-- /.portfolio-thumb -->
-                    </div> <!-- /.portfolio-item -->
-                   <div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <img src="images/gallery/operationManagemet.jpg" alt="">
-                            <div class="portfolio-overlay">
-                                <h3>Operations management</h3>
-                                <p>We bring deep industry knowlege and pratically executable strategy to connect strategic business vision.</p>                                 
-                            </div> <!-- /.portfolio-overlay -->
-                        </div> <!-- /.portfolio-thumb -->
-                    </div> <!-- /.portfolio-item -->
-                    <div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <img src="images/gallery/changeManagement.png" alt="">
-                            <div class="portfolio-overlay">
-                                <h3>Change management</h3>
-                                <p>We help organisations to drive change with powerful digital tools, adaptive interfaces, and effective integration to systems within enterprise stack, 3rd party stystems and social platforms to make change more personal and responsive.</p>                                 
-                            </div> <!-- /.portfolio-overlay -->
-                        </div> <!-- /.portfolio-thumb -->
-                    </div>
-                   </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /#services -->
+  <section id="doctrine" class="py-24 sm:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-navy-light/30"></div>
+    <div class="absolute inset-0 circuit-static opacity-30"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-warm-white mb-12 reveal">Our Doctrine</h2>
+      <div class="space-y-8 text-silver/90 leading-relaxed reveal">
+        <p class="text-lg">We do not sell technology. We co-create the systems that will define Britain's next century.</p>
+        <p>Sovereignty is not nostalgia. It is the ability to make consequential decisions without asking permission from a foreign server, a distant boardroom, or an algorithm whose provenance we cannot trace.</p>
+        <p>Every system we build is designed for auditability. For British ownership. For resilience when the world turns. We believe in open standards, domestic capability, and the quiet confidence that comes from knowing your infrastructure will still be there tomorrow.</p>
+        <p class="text-teal font-semibold text-xl">This is industrial futurism. This is Coalesce Works.</p>
+      </div>
+    </div>
+  </section>
 
+  <section id="mandates" class="py-24 sm:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 circuit-static opacity-30"></div>
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-warm-white mb-4 reveal">Selected Mandates</h2>
+      <p class="text-silver/80 max-w-2xl mb-16 reveal">Anonymised engagements. Real outcomes.</p>
+      <div class="space-y-8">
+        <div class="reveal glass-card rounded-xl p-6 sm:p-8 border-l-4 border-teal/50 hover:border-teal/70 transition-colors">
+          <div class="flex flex-wrap gap-3 mb-4">
+            <span class="px-3 py-1 bg-teal/10 text-teal text-xs font-semibold rounded-full">2025</span>
+            <span class="px-3 py-1 bg-silver/10 text-silver/80 text-xs rounded-full">Energy</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-warm-white mb-2">National Grid Load Forecasting</h3>
+          <p class="text-silver/80 text-sm">A major UK transmission operator engaged us to replace legacy demand models with transformer-based systems. Outcome: <span class="text-teal font-medium">23% improvement in forecast accuracy</span>, enabling <span class="text-teal font-medium">15% reduction</span> in reserve procurement costs.</p>
+        </div>
+        <div class="reveal glass-card rounded-xl p-6 sm:p-8 border-l-4 border-teal/50 hover:border-teal/70 transition-colors">
+          <div class="flex flex-wrap gap-3 mb-4">
+            <span class="px-3 py-1 bg-teal/10 text-teal text-xs font-semibold rounded-full">2024</span>
+            <span class="px-3 py-1 bg-silver/10 text-silver/80 text-xs rounded-full">Health</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-warm-white mb-2">Regional NHS Trust — Predictive Triage</h3>
+          <p class="text-silver/80 text-sm">Multimodal AI deployment across emergency pathways. <span class="text-teal font-medium">Reduced length of stay by 18%</span>, improved early detection of deterioration. System remains in production with full clinical oversight.</p>
+        </div>
+        <div class="reveal glass-card rounded-xl p-6 sm:p-8 border-l-4 border-teal/50 hover:border-teal/70 transition-colors">
+          <div class="flex flex-wrap gap-3 mb-4">
+            <span class="px-3 py-1 bg-teal/10 text-teal text-xs font-semibold rounded-full">2024</span>
+            <span class="px-3 py-1 bg-silver/10 text-silver/80 text-xs rounded-full">Finance</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-warm-white mb-2">UK Wealth Manager — Sovereign Custody</h3>
+          <p class="text-silver/80 text-sm">Designed and piloted DLT-based proof-of-custody for physical British Sovereigns. HMRC-compliant structure now serving <span class="text-teal font-medium">400+ high-net-worth clients</span> with full audit trail.</p>
+        </div>
+        <div class="reveal glass-card rounded-xl p-6 sm:p-8 border-l-4 border-teal/50 hover:border-teal/70 transition-colors">
+          <div class="flex flex-wrap gap-3 mb-4">
+            <span class="px-3 py-1 bg-teal/10 text-teal text-xs font-semibold rounded-full">2023</span>
+            <span class="px-3 py-1 bg-silver/10 text-silver/80 text-xs rounded-full">Agriculture</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-warm-white mb-2">East Anglian Grower Collective</h3>
+          <p class="text-silver/80 text-sm">Computer vision deployment across <span class="text-teal font-medium">12,000 hectares</span>. Disease detection at leaf level, precision irrigation. <span class="text-teal font-medium">Water use down 40%</span> in year one. Expanding to robotics in 2026.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="engage" class="py-24 sm:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 circuit-static opacity-40"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6">
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-warm-white mb-4 reveal">Engage</h2>
+      <p class="text-silver/80 max-w-2xl mb-12 reveal">We take few mandates. We commit fully to each one.</p>
+      <div class="grid lg:grid-cols-2 gap-12 items-start">
+        <div class="glass-card rounded-2xl p-8 reveal">
+          <h3 class="font-display text-xl font-bold text-warm-white mb-6">Get in touch</h3>
+          <noscript><p class="text-amber-400/90 text-sm mb-4">Please enable JavaScript to use the contact form.</p></noscript>
+          <form id="contact-form" @submit.prevent="formLoading = true; formError = ''; fetch('https://formspree.io/f/' + (window.FORMSPREE_ID || 'YOUR_FORMSPREE_FORM_ID'), { method: 'POST', body: new FormData($event.target), headers: { 'Accept': 'application/json' } }).then(r => r.json()).then(data => { formLoading = false; if (data.ok) formSubmitted = true; else formError = 'Something went wrong. Please try again.'; }).catch(() => { formLoading = false; formError = 'Network error. Please try again.'; })" class="space-y-5" x-show="!formSubmitted">
+            <input type="hidden" name="_subject" value="Coalesce Works — New enquiry">
+            <div><label for="name" class="block text-sm font-medium text-silver/80 mb-2">Name</label><input id="name" name="name" type="text" required autocomplete="name" class="w-full px-4 py-3 bg-navy/50 border border-silver/20 rounded-lg text-warm-white placeholder-silver/50 focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent" placeholder="Your name"></div>
+            <div><label for="org" class="block text-sm font-medium text-silver/80 mb-2">Organisation</label><input id="org" name="organisation" type="text" autocomplete="organization" class="w-full px-4 py-3 bg-navy/50 border border-silver/20 rounded-lg text-warm-white placeholder-silver/50 focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent" placeholder="Organisation"></div>
+            <div><label for="email" class="block text-sm font-medium text-silver/80 mb-2">Email</label><input id="email" name="email" type="email" required autocomplete="email" class="w-full px-4 py-3 bg-navy/50 border border-silver/20 rounded-lg text-warm-white placeholder-silver/50 focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent" placeholder="you@org.com"></div>
+            <div><label for="brief" class="block text-sm font-medium text-silver/80 mb-2">Brief</label><textarea id="brief" name="message" rows="4" class="w-full px-4 py-3 bg-navy/50 border border-silver/20 rounded-lg text-warm-white placeholder-silver/50 focus:outline-none focus:ring-2 focus:ring-teal focus:border-transparent resize-none" placeholder="Tell us about your challenge."></textarea></div>
+            <p x-show="formError" x-cloak class="text-red-400 text-sm" x-text="formError"></p>
+            <button type="submit" :disabled="formLoading" class="w-full py-4 bg-teal text-navy font-semibold rounded-lg hover:bg-teal/90 transition-colors focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-navy disabled:opacity-70" x-text="formLoading ? 'Sending…' : 'Submit'">Submit</button>
+          </form>
+          <div x-show="formSubmitted" x-cloak class="py-8 text-center">
+            <p class="text-teal font-semibold mb-2">Message received.</p>
+            <p class="text-silver/80 text-sm">Our team will be in touch within 48 hours.</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <div class="glass-card rounded-2xl p-8 text-center">
+            <h3 class="font-display text-xl font-bold text-warm-white mb-4">Book a Principal</h3>
+            <p class="text-silver/80 text-sm mb-6">30-minute introductory call. No commitment. No pitch deck.</p>
+            <button @click="modal = 'book'" class="w-full py-4 border-2 border-teal text-teal font-semibold rounded-lg hover:bg-teal/10 transition-colors focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-navy">Select time →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
 
-        <div class="content-section" id="portfolio">
-            <div class="container">
-                <div class="row">
-                    <div class="heading-section col-md-12 text-center">
-                        <h2>Digital</h2>
-                        <p>We have end-to-end capabilities to bring your new business vision to life on time with digital</p>
-                    </div> <!-- /.heading-section -->
-                </div> <!-- /.row -->
-                <div class="row">
-                    <div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <img src="images/gallery/analysis.png" alt="">
-                            <div class="portfolio-overlay">
-                                <h3>Analyze data to derive actionable Insights </h3>
-                                <p>Petabytes or Zettabytes our team of big data consultants are ready to work with you to develop meaningful and actionable insight that helps you to beat the competition.</p>
-                                <!--<a href="images/gallery/p1.jpg" data-rel="lightbox" class="expand">
-                                    <i class="fa fa-search"></i>
-                                </a> -->
-                            </div> <!-- /.portfolio-overlay -->
-                        </div> <!-- /.portfolio-thumb -->
-                    </div> <!-- /.portfolio-item -->    
-					<div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <img src="images/gallery/devops.png" alt="">
-                            <div class="portfolio-overlay">
-                                <h3>For your demanding requriments</h3>
-                                <p>We have solutions to your suspicion to change and risky deployments. Our Dev Ops consultants are ready to collaborate with you to automate and create safe platforms for change.</p>
-                                <!--<a href="images/gallery/p7.jpg" data-rel="lightbox" class="expand">
-                                    <i class="fa fa-search"></i>
-                                </a> -->
-                            </div> <!-- /.portfolio-overlay -->
-                        </div> <!-- /.portfolio-thumb -->
-                    </div> <!-- /.portfolio-item -->
-					<div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <img src="images/gallery/integrate.png" alt="">
-                            <div class="portfolio-overlay">
-                                <h3>EAI</h3>
-                                <p>You may have a monolithic legacy system or you may have many modular systems. Our Integration consultants bring technical, functional, and design skills to help you effectively leverage today’s digital platforms.</p>
-                                <!--<a href="images/gallery/p8.jpg" data-rel="lightbox" class="expand">
-                                    <i class="fa fa-search"></i>
-                                </a> -->
-                            </div> <!-- /.portfolio-overlay -->
-                        </div> <!-- /.portfolio-thumb -->
-                    </div> <!-- /.portfolio-item -->
-					<div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <img src="images/gallery/createExperience.png" alt="">
-                            <div class="portfolio-overlay">
-                                <h3>Create Experience</h3>
-                                <p>No more cold calling, Explore all opportunities in your business. Lets pioneer your digital transformation with our business and technical skills. Lets Engage your customers with their needs.</p>
-                                <!--<a href="images/gallery/p1.jpg" data-rel="lightbox" class="expand">
-                                    <i class="fa fa-search"></i>
-                                </a> -->
-                            </div> <!-- /.portfolio-overlay -->
-                        </div> <!-- /.portfolio-thumb -->
-                    </div> <!-- /.portfolio-item -->
-                    </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /#portfolio -->
+  <footer class="py-16 border-t border-silver/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div>
+          <p class="font-display font-bold text-warm-white text-lg">Coalesce Works</p>
+          <p class="text-silver/60 text-sm mt-2">Sovereign technology consultancy. Built for Great Britain.</p>
+        </div>
+        <div>
+          <p class="text-silver/80 font-medium text-sm mb-4">Navigate</p>
+          <nav class="space-y-2"><a href="#mission" class="block text-silver/60 hover:text-teal text-sm">Mission</a><a href="#projects" class="block text-silver/60 hover:text-teal text-sm">Projects</a><a href="#doctrine" class="block text-silver/60 hover:text-teal text-sm">Doctrine</a><a href="#mandates" class="block text-silver/60 hover:text-teal text-sm">Mandates</a><a href="#engage" class="block text-silver/60 hover:text-teal text-sm">Engage</a></nav>
+        </div>
+        <div>
+          <p class="text-silver/80 font-medium text-sm mb-4">Domains</p>
+          <p class="text-silver/60 text-sm">Energy • Agriculture • Health • Finance</p>
+        </div>
+        <div>
+          <p class="text-silver/60 text-sm italic">Made with quiet determination in the United Kingdom.</p>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-silver/10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <p class="text-silver/50 text-sm">Coalesce Works © 2026. All rights reserved.</p>
+        <p class="text-silver/40 text-xs">Registered in England & Wales</p>
+      </div>
+    </div>
+  </footer>
 
+  <div id="fab" class="fixed bottom-8 right-8 z-40 transition-opacity duration-300" style="opacity:0;pointer-events:none" aria-hidden="true">
+    <a href="#engage" class="flex items-center justify-center w-14 h-14 bg-teal text-navy rounded-full shadow-lg hover:bg-teal/90 hover:scale-110 transition-all focus:outline-none focus:ring-2 focus:ring-teal focus:ring-offset-2 focus:ring-offset-navy" aria-label="Engage" title="Get in touch">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    </a>
+  </div>
 
+  <div x-show="modal" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-4" @click.self="modal = null" role="dialog" aria-modal="true" :aria-labelledby="modal ? 'modal-' + modal : null">
+    <div class="absolute inset-0 bg-navy/95 backdrop-blur-sm" @click="modal = null"></div>
+    <div x-show="modal === 'volt'" x-transition class="relative glass-card rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 m-4" @click.stop>
+      <h3 id="modal-volt" class="font-display text-2xl font-bold text-warm-white mb-4">Project Volt — Energy Sovereignty</h3>
+      <p class="text-silver/90 mb-4">Britain imports over 40% of its gas. When global markets spike, British households and industry bear the cost. Project Volt changes the equation.</p>
+      <p class="text-silver/80 mb-6">Our transformer-based load models ingest real-time data from the National Grid, weather systems, and industrial demand signals. We forecast consumption with sub-hourly precision, enabling operators to balance renewable generation—wind, solar, nuclear—without gas peakers. The result: a grid that can run on 90% domestic generation, resilient to geopolitical shocks.</p>
+      <button @click="modal = null" class="px-6 py-2 border border-silver/30 rounded-lg hover:border-teal text-silver hover:text-teal transition-colors">Close</button>
+    </div>
+    <div x-show="modal === 'ceres'" x-transition class="relative glass-card rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 m-4" @click.stop>
+      <h3 id="modal-ceres" class="font-display text-2xl font-bold text-warm-white mb-4">Project Ceres — Agricultural Sovereignty</h3>
+      <p class="text-silver/90 mb-4">The UK produces less than 60% of its food. Brexit exposed supply chain fragility; climate change will intensify it. Project Ceres reimagines British agriculture.</p>
+      <p class="text-silver/80 mb-6">Computer vision systems mounted on tractors and drones detect crop stress, disease, and nutrient deficiency at scale. Robotics handle planting, weeding, and harvesting with precision that cuts water use by 95% and eliminates chemical runoff. Vertical farms in disused industrial sites produce vegetables year-round. The goal: food sovereignty by 2035.</p>
+      <button @click="modal = null" class="px-6 py-2 border border-silver/30 rounded-lg hover:border-teal text-silver hover:text-teal transition-colors">Close</button>
+    </div>
+    <div x-show="modal === 'aethelgard'" x-transition class="relative glass-card rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 m-4" @click.stop>
+      <h3 id="modal-aethelgard" class="font-display text-2xl font-bold text-warm-white mb-4">Project Aethelgard — Health Sovereignty</h3>
+      <p class="text-silver/90 mb-4">The NHS treats illness; it rarely prevents it. Britain spends £150bn annually on healthcare while life expectancy stalls. Project Aethelgard shifts the paradigm.</p>
+      <p class="text-silver/80 mb-6">Multimodal agentic AI synthesises patient records, imaging, genomics, and real-time vitals into a unified care model. It predicts deterioration days before crisis, flags drug interactions, and recommends personalised interventions. Clinicians remain in control—the system augments, never replaces.</p>
+      <button @click="modal = null" class="px-6 py-2 border border-silver/30 rounded-lg hover:border-teal text-silver hover:text-teal transition-colors">Close</button>
+    </div>
+    <div x-show="modal === 'bullion'" x-transition class="relative glass-card rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 m-4" @click.stop>
+      <h3 id="modal-bullion" class="font-display text-2xl font-bold text-warm-white mb-4">Project Bullion — Financial Sovereignty</h3>
+      <p class="text-silver/90 mb-4">British investors pay Capital Gains Tax on gold ETFs and foreign coins. Physical British Sovereigns are CGT-exempt. Project Bullion makes it accessible.</p>
+      <p class="text-silver/80 mb-6">Our distributed ledger records custody of physical Sovereigns in UK vaults. Each token represents fractional ownership with full legal title. HMRC recognises the structure. Investors can hold £1 or £1m in tax-efficient form, with instant settlement and transparent audit.</p>
+      <button @click="modal = null" class="px-6 py-2 border border-silver/30 rounded-lg hover:border-teal text-silver hover:text-teal transition-colors">Close</button>
+    </div>
+    <div x-show="modal === 'book'" x-transition class="relative glass-card rounded-2xl max-w-lg w-full p-8 m-4" @click.stop>
+      <h3 id="modal-book" class="font-display text-2xl font-bold text-warm-white mb-4">Book a Principal</h3>
+      <p class="text-silver/80 mb-6">Select a 30-minute slot. Slots refresh weekly. We will confirm within 24 hours.</p>
+      <form id="booking-form" @submit.prevent="bookingLoading = true; bookingError = ''; fetch('https://formspree.io/f/' + (window.FORMSPREE_ID || 'YOUR_FORMSPREE_FORM_ID'), { method: 'POST', body: new FormData($event.target), headers: { 'Accept': 'application/json' } }).then(r => r.json()).then(data => { bookingLoading = false; if (data.ok) { bookingSubmitted = true; setTimeout(() => { modal = null; bookingSubmitted = false }, 2000); } else bookingError = 'Something went wrong.'; }).catch(() => { bookingLoading = false; bookingError = 'Network error.'; })" class="space-y-4" x-show="!bookingSubmitted">
+        <input type="hidden" name="_subject" value="Coalesce Works — Book a Principal request">
+        <div>
+          <label class="block text-sm font-medium text-silver/80 mb-2">Preferred slot</label>
+          <div class="space-y-2">
+            <label class="flex items-center gap-3 px-4 py-3 bg-navy/30 border border-silver/20 rounded-lg cursor-pointer hover:border-teal/50 transition-colors"><input type="radio" name="slot" value="Tuesday 10:00" class="text-teal"> <span>Tuesday 10:00</span></label>
+            <label class="flex items-center gap-3 px-4 py-3 bg-navy/30 border border-silver/20 rounded-lg cursor-pointer hover:border-teal/50 transition-colors"><input type="radio" name="slot" value="Wednesday 14:30" class="text-teal"> <span>Wednesday 14:30</span></label>
+            <label class="flex items-center gap-3 px-4 py-3 bg-navy/30 border border-silver/20 rounded-lg cursor-pointer hover:border-teal/50 transition-colors"><input type="radio" name="slot" value="Thursday 15:00" class="text-teal"> <span>Thursday 15:00</span></label>
+          </div>
+        </div>
+        <div><label class="block text-sm font-medium text-silver/80 mb-2">Name</label><input name="name" type="text" required autocomplete="name" class="w-full px-4 py-3 bg-navy/50 border border-silver/20 rounded-lg text-warm-white placeholder-silver/50 focus:outline-none focus:ring-2 focus:ring-teal" placeholder="Your name"></div>
+        <div><label class="block text-sm font-medium text-silver/80 mb-2">Email</label><input name="email" type="email" required autocomplete="email" class="w-full px-4 py-3 bg-navy/50 border border-silver/20 rounded-lg text-warm-white placeholder-silver/50 focus:outline-none focus:ring-2 focus:ring-teal" placeholder="you@org.com"></div>
+        <p x-show="bookingError" x-cloak class="text-red-400 text-sm" x-text="bookingError"></p>
+        <div class="flex gap-3">
+          <button type="submit" :disabled="bookingLoading" class="flex-1 py-3 bg-teal text-navy font-semibold rounded-lg hover:bg-teal/90 disabled:opacity-70" x-text="bookingLoading ? 'Sending…' : 'Request call'">Request call</button>
+          <button type="button" @click="modal = null" class="px-6 py-3 border border-silver/30 rounded-lg hover:border-teal text-silver hover:text-teal transition-colors">Close</button>
+        </div>
+      </form>
+      <div x-show="bookingSubmitted" x-cloak class="py-8 text-center">
+        <p class="text-teal font-semibold mb-2">Request received.</p>
+        <p class="text-silver/80 text-sm">We will confirm your slot by email within 24 hours.</p>
+      </div>
+    </div>
+  </div>
 
+  <style>[x-cloak]{display:none!important}</style>
+  <style>@keyframes dash{to{stroke-dashoffset:-24}}</style>
 
-        <div class="content-section" id="our-team">
-            <div class="container">
-                <div class="row">
-                    <div class="heading-section col-md-12 text-center">
-                        <h2>Careers & About Us</h2>
-                        <p>Happy to work with you - To meet our people Send your CV to careers@coalesceworks.com</p>						
-                    </div> <!-- /.heading-section -->
-                </div> <!-- /.row -->
-                <div class="row">
-                    <div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <h3><b>Dev Ops Consultant</b></h3>
-						<p><b>1. </b>Excellent Linux & AWS system administration skills with strong commercial experience of managing complex enterprise infrastructure environments</p>
-						<p><b>2. </b>Hands on application automation using Puppet/Chef</p>
-						<p><b>3. </b>Very good Python or Ruby, Shell Scripting, continuous integration and build tools</p>
-                                 <!-- /.team-overlay -->
-                        </div> <!-- /.member-thumb -->
-                    </div> <!-- /.team-member -->
-                    <div class="portfolio-item col-md-3 col-sm-6">
-                        <div class="portfolio-thumb">
-                            <h3><b>Integration Consultant</b></h3>
-						<p><b>1. </b>Must be a Mule ESB 3.x – Expert Level with Architectural, detailed Design and enterprise business experience within Mule ESB</p>
-						<p><b>2. </b>Hands-on experience with leading SaaS applications and have specific knowledge of Mule CloudHub (v3.x), Web API - SOAP, REST and authentication methods such as OAuth and SAML</p>
-						<p><b>3. </b>Thorough demonstrable understanding of cloud architecture for enterprise applications</p>
-                                 <!-- /.team-overlay -->
-                        </div> <!-- /.member-thumb -->
-                    </div> <!-- /.team-member -->
-                    
-                    <!--<div class="team-member col-md-3 col-sm-6">
-                        <div class="member-thumb">
-                            <img src="images/member3.jpg" alt="">
-                            <div class="team-overlay">
-                                <h3>Julia</h3>
-                                <span>Director</span>
-                                <ul class="social">
-                                    <li><a href="#" class="fa fa-facebook"></a></li>
-                                    <li><a href="#" class="fa fa-twitter"></a></li>
-                                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                                </ul>
-                            </div> 
-                        </div> 
-                    </div> --> <!-- /.team-member -->
-                   <!--<div class="team-member col-md-3 col-sm-6">
-                        <div class="member-thumb">
-                            <img src="images/member4.jpg" alt="">
-                            <div class="team-overlay">
-                                <h3>Linda</h3>
-                                <span>Chief Executive</span>
-                                <ul class="social">
-                                    <li><a href="#" class="fa fa-facebook"></a></li>
-                                    <li><a href="#" class="fa fa-twitter"></a></li>
-                                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                                </ul>
-                            </div> 
-                        </div> 
-                    </div>   -->
-                </div>  <!--/.row -->
-                <div class="row">
-                    <div class="heading-section col-md-12 text-center">
-                        <div class="skills-heading">
-                            <h3 class="skills-title">About Us</h3>
-                            <p class="small-text">Driven by curiosity | Open to Innovation | Capacity to deliver</p>
-                        </div>
-                    </div> <!-- /.col-md-12 -->
-                </div> <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-8 col-sm-6">
-                        <p>We serve fintech startups to large businesses to governments and dedicated to every customer sucess.We solve complex business challenges our main strengths are Big Data technologies, Middleware Integration and Dev Ops. 
-						</p>
-						<p>
-						We work with you at every stage of the project from prototype to architecture to development to release and post production support.
-						</p>
-						<p>
-							We are professional team throughout USA, Europe, UK and India. 
-						</p>
-                    </div> <!-- /.col-md-8 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /#our-team -->
-
-
-
-
-        <div class="content-section" id="contact">
-            <div class="container">
-                <div class="row">
-                    <div class="heading-section col-md-12 text-center">
-                        <h2>Contact</h2>
-                        <p>Send a message to us</p>
-                    </div> <!-- /.heading-section -->
-                </div> <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-12">
-                       <div class="googlemap-wrapper">
-                            <div id="map_canvas" class="map-canvas"></div>
-                        </div> <!-- /.googlemap-wrapper -->
-                    </div> <!-- /.col-md-12 -->
-                </div> <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-7 col-sm-6">
-                        <p><a rel="nofollow" href="http://www.coalesceworks.com" target="_parent">Coalesce Works</a> is free Bootstrap v3.1.1 theme by <span class="blue">template</span><span class="green">mo</span> that can be applied to any website. Slider images and portfolio images are from <a rel="nofollow" href="http://unsplash.com">Unsplash</a> website. Thank you for visiting.<br><br>
-                        Hic, suscipit, praesentium earum quod ea distinctio impedit ullam deserunt minus dolore quibusdam quis saepe aliquam doloribus voluptatibus eum excepturi. Aenean semper erat neque. Nunc et scelerisque nunc, in adipiscing magna.<br><br>
-				    Duis ullamcorper tortor tellus. Ut diam libero, ultricies non augue a, mollis congue risus. Fusce a quam eget nisi luctus imperdiet. Consectetur quod at aperiam corporis totam. Nesciunt minima laborum sapiente totam facere unde est cum quia. 
-                    	</p>
-                        <ul class="contact-info">
-                            <li>Phone: 090-090-0990</li>
-                            <li>Email: <a href="mailto:info@coalesceworks.com">info@coalesceworks.com</a></li>
-                            <li>Address: 987 Pro Studio, Fulton Street, San Francisco</li>
-                        </ul>
-                        <!-- spacing for mobile viewing --><br><br>
-                    </div> <!-- /.col-md-7 -->
-                    <div class="col-md-5 col-sm-6">
-                        <div class="contact-form">
-                            <form method="post" name="contactform" id="contactform">
-                                <p>
-                                    <input name="name" type="text" id="name" placeholder="Your Name">
-                                </p>
-                                <p>
-                                    <input name="email" type="text" id="email" placeholder="Your Email"> 
-                                </p>
-                                <p>
-                                    <input name="subject" type="text" id="subject" placeholder="Subject"> 
-                                </p>
-                                <p>
-                                    <textarea name="comments" id="comments" placeholder="Message"></textarea>    
-                                </p>
-                                <input type="submit" class="mainBtn" id="submit" value="Send Message">
-                            </form>
-                        </div> <!-- /.contact-form -->
-                    </div> <!-- /.col-md-5 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /#contact -->
-            
-        <div id="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-xs-12 text-left">
-                        <span>Copyright &copy; 2084 Coalesce Works 
-                        
-                        | Design: <a rel="nofollow" href="http://www.coalesceworks.com"
-                        title="Coalesce Works Bootstrap Theme" target="_parent">Coalesce Works</a>
-
-                        </span>
-                  </div> <!-- /.text-center -->
-                    <div class="col-md-4 hidden-xs text-right">
-                        <a href="#top" id="go-top">Back to top</a>
-                    </div> <!-- /.text-center -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
-        </div> <!-- /#footer -->
-        
-        <script src="js/vendor/jquery-1.11.0.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-
-        <!-- Google Map -->
-        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="js/vendor/jquery.gmap3.min.js"></script>
-        
-        <!-- Google Map Init-->
-        <script type="text/javascript">
-            jQuery(function($){
-                $('#map_canvas').gmap3({
-                    marker:{
-                        address: '37.769725, -122.462154' 
-                    },
-                        map:{
-                        options:{
-                        zoom: 15,
-                        scrollwheel: false,
-                        streetViewControl : true
-                        }
-                    }
-                });
-            });
-        </script>
-        <!-- templatemo 406 Coalesce Works -->
-    </body>
+  <script>
+    (function(){
+      if (!window.FORMSPREE_ID || window.FORMSPREE_ID === 'YOUR_FORMSPREE_FORM_ID') {
+        console.warn('Coalesce Works: Replace FORMSPREE_ID with your form ID from formspree.io for contact forms to work.');
+      }
+      const io = new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+      const hero = document.querySelector('section');
+      const fab = document.getElementById('fab');
+      if(hero&&fab){
+        const fabObs = new IntersectionObserver(([e])=>{
+          const visible = !e.isIntersecting;
+          fab.setAttribute('data-visible', visible);
+          fab.style.opacity = visible ? '1' : '0';
+          fab.style.pointerEvents = visible ? 'auto' : 'none';
+          fab.setAttribute('aria-hidden', !visible);
+        }, { threshold: 0 });
+        fabObs.observe(hero);
+      }
+      const nav = document.querySelector('nav.scrolled-nav');
+      if(nav) {
+        const updateNav = ()=> nav.classList.toggle('is-scrolled', window.scrollY > 50);
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+      }
+    })();
+  </script>
+</body>
 </html>
